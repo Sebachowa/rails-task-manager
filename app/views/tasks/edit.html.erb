@@ -1,0 +1,18 @@
+<!--<%= form_for(@task) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.label :done %>
+  <%= form.check_box :done %>
+  <%= form.submit %>
+<% end %>-->
+
+<form action="/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="name" value="<%=@task.name%>">
+  <input type="text" name="description" value="<%=@task.description%>">
+  <input type="checkbox" name="done" value="<%=@task.done%>">
+  <button>Update !</button>
+</form>
